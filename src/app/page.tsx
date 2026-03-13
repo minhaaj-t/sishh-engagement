@@ -57,43 +57,41 @@ const blessings = [
 
 export default function EngagementInvitation() {
   return (
-    <div className="min-h-screen bg-white text-amber-900">
+    <div className="min-h-screen min-w-0 bg-white text-amber-900">
       <BgmPlayer />
       {/* Hero - Lamp */}
       <Lamp>
         <KeralaBorder />
-        <p className="text-xs uppercase tracking-[0.35em] text-amber-700/90 mb-4 font-medium">
+        <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.35em] text-amber-700/90 mb-3 sm:mb-4 font-medium px-2 text-center">
           With the blessings of our families
         </p>
         <TextGenerateEffect
           words="Engagement"
-          className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-amber-900 text-center"
+          className="text-2xl sm:text-4xl md:text-5xl font-light tracking-tight text-amber-900 text-center px-2 max-w-full"
           duration={0.08}
         />
         <motion.div
-          className="mt-6 flex flex-col items-center gap-1 sm:flex-row sm:gap-4"
+          className="mt-4 sm:mt-6 flex flex-col items-center gap-1 sm:flex-row sm:gap-4"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.6 }}
         >
           <TextGenerateEffect
             words="Sishaj"
-            className="text-2xl sm:text-3xl font-serif font-medium text-amber-800"
+            className="text-xl sm:text-2xl md:text-3xl font-serif font-medium text-amber-800 text-center"
             duration={0.05}
           />
           <span className="flex items-center gap-1.5 text-amber-600/90">
-            <HeartIcon className="h-5 w-5 sm:h-6 sm:w-6" />
-            <span className="text-xl sm:text-2xl font-serif">&</span>
-            <HeartIcon className="h-5 w-5 sm:h-6 sm:w-6" />
+            <HeartIcon className="h-5 w-5 sm:h-6 sm:w-6 shrink-0" />
           </span>
           <TextGenerateEffect
             words="Athulya"
-            className="text-2xl sm:text-3xl font-serif font-medium text-amber-800"
+            className="text-xl sm:text-2xl md:text-3xl font-serif font-medium text-amber-800 text-center"
             duration={0.05}
           />
         </motion.div>
         <motion.p
-          className="mt-8 text-amber-700/90 text-lg"
+          className="mt-6 sm:mt-8 text-amber-700/90 text-base sm:text-lg px-2 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.6, duration: 0.5 }}
@@ -101,7 +99,7 @@ export default function EngagementInvitation() {
           Request the pleasure of your presence
         </motion.p>
         <motion.p
-          className="mt-2 text-amber-600/80"
+          className="mt-1 sm:mt-2 text-amber-600/80 text-sm sm:text-base px-2 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.9, duration: 0.5 }}
@@ -112,11 +110,11 @@ export default function EngagementInvitation() {
       </Lamp>
 
       {/* Invitation line */}
-      <section className="relative border-t border-amber-600/20 bg-amber-50/40 py-16 px-4">
+      <section className="relative border-t border-amber-600/20 bg-amber-50/40 py-10 sm:py-16 px-4">
         <KeralaDivider />
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center px-1">
           <motion.h2
-            className="text-xl font-medium text-amber-800 mb-2"
+            className="text-lg sm:text-xl font-medium text-amber-800 mb-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -124,7 +122,7 @@ export default function EngagementInvitation() {
             You are cordially invited
           </motion.h2>
           <motion.p
-            className="text-amber-800/80"
+            className="text-sm sm:text-base text-amber-800/80 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -137,9 +135,9 @@ export default function EngagementInvitation() {
       </section>
 
       {/* Schedule */}
-      <section className="relative border-t border-amber-600/20 py-20 px-4 flex flex-col items-center">
+      <section className="relative border-t border-amber-600/20 py-12 sm:py-20 px-4 flex flex-col items-center">
         <motion.h2
-          className="text-center text-2xl font-light text-amber-900 mb-4"
+          className="text-center text-xl sm:text-2xl font-light text-amber-900 mb-3 sm:mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -147,15 +145,15 @@ export default function EngagementInvitation() {
           Programme
         </motion.h2>
         <KeralaDivider className="py-2" />
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center px-0 sm:px-4">
           <Timeline data={timelineData} />
         </div>
       </section>
 
       {/* Blessings - Infinite Moving Cards */}
-      <section className="relative border-t border-amber-600/20 bg-amber-50/40 py-20 overflow-hidden">
+      <section className="relative border-t border-amber-600/20 bg-amber-50/40 py-12 sm:py-20 overflow-hidden">
         <motion.h2
-          className="text-center text-2xl font-light text-amber-900 mb-4"
+          className="text-center text-xl sm:text-2xl font-light text-amber-900 mb-3 sm:mb-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -173,11 +171,11 @@ export default function EngagementInvitation() {
       </section>
 
       {/* Closing */}
-      <section className="relative border-t border-amber-600/20 py-20 px-4">
+      <section className="relative border-t border-amber-600/20 py-12 sm:py-20 px-4">
         <KeralaDivider />
-        <div className="mx-auto max-w-xl text-center">
+        <div className="mx-auto max-w-xl text-center px-1">
           <motion.p
-            className="text-xl font-light text-amber-800"
+            className="text-lg sm:text-xl font-light text-amber-800"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -185,7 +183,7 @@ export default function EngagementInvitation() {
             We seek your blessings and presence.
           </motion.p>
           <motion.p
-            className="mt-4 text-amber-700/80 text-sm"
+            className="mt-3 sm:mt-4 text-amber-700/80 text-xs sm:text-sm"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

@@ -23,8 +23,15 @@
   }
 }
 
+html,
+body {
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   background: #ffffff;
   color: #78350f;
   font-family: var(--font-sans), serif;
+  min-width: 0;
 }

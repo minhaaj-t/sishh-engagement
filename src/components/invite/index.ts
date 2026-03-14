@@ -9,3 +9,4 @@ export { Rsvp } from "./Rsvp";
 export { ThingsToKnow, type ThingItem } from "./ThingsToKnow";
 export { Follow } from "./Follow";
 export { Countdown } from "./Countdown";
+export { Footer } from "./Footer";

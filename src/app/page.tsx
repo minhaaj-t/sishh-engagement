@@ -8,6 +8,7 @@ import {
   ThingsToKnow,
   Follow,
   Countdown,
+  Footer,
 } from "@/components/invite";
 import { Lamp } from "@/components/ui/lamp";
 import { inviteData } from "@/data/invite";
@@ -47,6 +48,7 @@ export default function Home() {
         <ThingsToKnow mapEmbedUrl={mapEmbedUrl} mapUrl={mapUrl} />
         <Follow instagramUrl={instagramUrl} />
         <Countdown targetDate={countdownTargetDate} />
+        <Footer />
       </main>
     </>
   );

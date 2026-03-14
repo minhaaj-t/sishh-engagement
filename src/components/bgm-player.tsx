@@ -52,6 +52,7 @@ export function BgmPlayer() {
   const [isMuted, setIsMuted] = useState(true);
   const [showOverlay, setShowOverlay] = useState(true);
   const [isClosing, setIsClosing] = useState(false);
+  const [isPlayerReady, setIsPlayerReady] = useState(false);
 
   const createPlayer = useCallback(() => {
     if (!containerRef.current || playerRef.current) return;
@@ -75,6 +76,7 @@ export function BgmPlayer() {
             if (playerRef.current) return;
             playerRef.current = event.target;
             event.target.playVideo();
+            setIsPlayerReady(true);
           },
         },
       });
@@ -92,22 +94,9 @@ export function BgmPlayer() {
       }
     };
 
-    const scriptId = "youtube-iframe-api";
-    if (document.getElementById(scriptId)) {
-      if (window.YT?.Player) {
-        requestAnimationFrame(() => createPlayer());
-      }
-      return () => {
-        window.onYouTubeIframeAPIReady = () => {};
-      };
+    if (window.YT?.Player && containerRef.current) {
+      requestAnimationFrame(() => createPlayer());
     }
-
-    const tag = document.createElement("script");
-    tag.id = scriptId;
-    tag.src = "https://www.youtube.com/iframe_api";
-    tag.async = true;
-    const firstScript = document.getElementsByTagName("script")[0];
-    firstScript?.parentNode?.insertBefore(tag, firstScript);
 
     return () => {
       window.onYouTubeIframeAPIReady = () => {};
@@ -118,8 +107,9 @@ export function BgmPlayer() {
     const player = playerRef.current;
     setIsClosing(true);
     fireConfetti();
-    if (player) {
+    if (player && isPlayerReady) {
       try {
+        player.playVideo();
         player.unMute();
         player.setVolume(100);
         setIsMuted(false);
@@ -127,7 +117,7 @@ export function BgmPlayer() {
         // ignore
       }
     }
-  }, []);
+  }, [isPlayerReady]);
 
   const handleOverlayExitComplete = useCallback(() => {
     setShowOverlay(false);
@@ -149,8 +139,12 @@ export function BgmPlayer() {
       <div
         ref={containerRef}
         id="bgm-youtube-container"
-        className="fixed bottom-0 left-0 h-0 w-0 overflow-hidden opacity-0 pointer-events-none"
-        style={{ position: "fixed", left: "-9999px" }}
+        className="fixed overflow-hidden opacity-0 pointer-events-none"
+        style={{
+          left: "-9999px",
+          width: "256px",
+          height: "144px",
+        }}
       />
       <AnimatePresence onExitComplete={handleOverlayExitComplete}>
         {showOverlay && (
@@ -231,6 +225,7 @@ export function BgmPlayer() {
                   <motion.button
                     type="button"
                     onClick={handleOpen}
+                    disabled={!isPlayerReady}
                     initial={{ scale: 0.9 }}
                     animate={
                       isClosing
@@ -238,16 +233,16 @@ export function BgmPlayer() {
                         : { scale: 1, opacity: 1 }
                     }
                     transition={{ duration: 0.35 }}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="rounded-full px-7 py-3.5 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-paper)]"
+                    whileHover={isPlayerReady ? { scale: 1.03 } : undefined}
+                    whileTap={isPlayerReady ? { scale: 0.98 } : undefined}
+                    className="rounded-full px-7 py-3.5 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-paper)] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
                     style={{
                       background: "var(--gold-deep)",
                       boxShadow: "0 4px 14px rgba(44, 24, 16, 0.25), inset 0 1px 0 rgba(255,255,255,0.15)",
                     }}
                     aria-label="Open invitation and play music"
                   >
-                    Open
+                    {isPlayerReady ? "Open" : "Loading…"}
                   </motion.button>
                   <motion.button
                     type="button"

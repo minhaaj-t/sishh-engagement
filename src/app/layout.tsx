@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Cormorant_Garamond, Outfit, Great_Vibes } from "next/font/google";
 import "./globals.css";
 
@@ -29,7 +30,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorant.variable} ${outfit.variable} ${greatVibes.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script
+          src="https://www.youtube.com/iframe_api"
+          strategy="beforeInteractive"
+        />
+      </body>
     </html>
   );
 }

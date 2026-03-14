@@ -14,19 +14,19 @@ export function Timeline({ data }: { data: TimelineEntry[] }) {
       {data.map((item, i) => (
         <motion.div
           key={i}
-          className="w-full flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8 p-4 sm:p-5 rounded-lg border border-amber-600/25 bg-white shadow-sm"
+          className="w-full flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8 p-4 sm:p-5 rounded-xl border border-gold-line bg-card shadow-card transition-shadow hover:shadow-card-hover"
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.35, delay: i * 0.05 }}
         >
           <div className="flex-1 min-w-0 text-center sm:text-left">
-            <h3 className="text-base sm:text-lg font-semibold text-amber-800">{item.title}</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-ink-primary">{item.title}</h3>
             {item.time && (
-              <p className="text-amber-700 font-medium mt-0.5">{item.time}</p>
+              <p className="text-ink-muted font-medium mt-0.5 text-sm">{item.time}</p>
             )}
           </div>
-          <div className="flex-1 min-w-0 text-center sm:text-left text-amber-900/85 text-sm sm:text-base">
+          <div className="flex-1 min-w-0 text-center sm:text-left text-ink-secondary text-sm sm:text-base leading-relaxed">
             {item.content}
           </div>
         </motion.div>

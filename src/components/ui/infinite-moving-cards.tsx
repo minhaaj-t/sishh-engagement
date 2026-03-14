@@ -48,12 +48,12 @@ export function InfiniteMovingCards({
         {duplicated.map((item, i) => (
           <div
             key={i}
-            className="flex w-[280px] sm:w-[350px] max-w-[85vw] shrink-0 flex-col gap-2 rounded-lg border border-amber-600/30 bg-white/95 px-4 sm:px-6 py-3 sm:py-4 shadow-sm"
+            className="flex w-[280px] sm:w-[350px] max-w-[85vw] shrink-0 flex-col gap-2 rounded-xl border border-gold-line bg-card px-4 sm:px-6 py-4 sm:py-5 shadow-card transition-shadow hover:shadow-card-hover"
           >
-            <p className="text-xs sm:text-sm leading-relaxed text-amber-900/85">{item.quote}</p>
+            <p className="text-sm leading-relaxed text-ink-secondary">{item.quote}</p>
             <div>
-              <p className="font-medium text-amber-800 text-sm sm:text-base">{item.name}</p>
-              {item.title ? <p className="text-xs text-amber-700/70">{item.title}</p> : null}
+              <p className="font-semibold text-ink-primary text-sm sm:text-base">{item.name}</p>
+              {item.title ? <p className="text-xs text-ink-muted mt-0.5">{item.title}</p> : null}
             </div>
           </div>
         ))}

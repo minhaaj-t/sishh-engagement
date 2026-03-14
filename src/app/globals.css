@@ -1,37 +1,86 @@
 @import "tailwindcss";
 
+/* Design system: City-style engagement invite — warm paper, gold accents */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Gold palette */
+  --gold-line: #b8860b;
+  --gold-soft: #d4af37;
+  --gold-mid: #c9a227;
+  --gold-deep: #8b6914;
+  --gold-pale: #e8d5a3;
+  /* Surfaces */
+  --bg-page: #faf6f0;
+  --bg-paper: #fdfcf9;
+  --bg-overlay: rgba(250, 246, 240, 0.92);
+  --warm: #f5f0e8;
+  --card: #fdfcf9;
+  /* Ink */
+  --ink-primary: #2c1810;
+  --ink-secondary: #4a3728;
+  --ink-muted: #6b5344;
+  /* Shadows */
+  --shadow-card: 0 2px 12px rgba(44, 24, 16, 0.06);
+  --shadow-card-hover: 0 8px 24px rgba(44, 24, 16, 0.1);
+  --shadow-overlay: 0 24px 48px rgba(44, 24, 16, 0.15);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-cormorant);
+@theme {
+  --color-gold-line: var(--gold-line);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-mid: var(--gold-mid);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-pale: var(--gold-pale);
+  --color-ink-primary: var(--ink-primary);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+  --color-paper: var(--bg-paper);
+  --color-card: var(--card);
+  --color-warm: var(--warm);
+  --color-page: var(--bg-page);
+  --color-overlay: var(--bg-overlay);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+  --shadow-overlay: var(--shadow-overlay);
+  /* Typography */
+  --font-serif: "Cormorant Garamond", "Georgia", serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-decorative: "Great Vibes", "Georgia", cursive;
 }
 
-@keyframes scroll {
-  to {
-    transform: translate(calc(-50% - 0.5rem));
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  body {
+    @apply antialiased text-ink-primary bg-page;
+    font-family: var(--font-sans);
+  }
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline-none ring-2 ring-gold-mid ring-offset-2 ring-offset-paper;
   }
 }
 
-@keyframes scroll-reverse {
-  to {
-    transform: translate(calc(50% + 0.5rem));
+/* Scroll-driven reveal animation keyframes (used by sections) */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-}
-
-html,
-body {
-  overflow-x: hidden;
-  -webkit-tap-highlight-color: transparent;
-}
-
-body {
-  background: #ffffff;
-  color: #78350f;
-  font-family: var(--font-sans), serif;
-  min-width: 0;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

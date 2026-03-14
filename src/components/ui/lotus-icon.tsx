@@ -5,7 +5,7 @@ export function LotusIcon({ className = "" }: { className?: string }) {
     <svg
       viewBox="0 0 64 64"
       fill="none"
-      className={`text-amber-600/90 ${className}`}
+      className={`text-gold-mid ${className}`}
       aria-hidden
     >
       {/* Simplified lotus flower - traditional auspicious symbol */}

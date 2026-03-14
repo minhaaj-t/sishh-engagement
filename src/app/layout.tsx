@@ -1,23 +1,25 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond } from "next/font/google";
+import { Cormorant_Garamond, Outfit, Great_Vibes } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-serif",
+});
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-decorative",
 });
 
 export const metadata: Metadata = {
-  title: "Sishaj & Athulya — Engagement Invitation",
-  description: "With the blessings of our families, we request the pleasure of your presence at our engagement.",
-};
-
-export const viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  viewportFit: "cover" as const,
+  title: "Wedding Invitation",
+  description: "You're invited to celebrate with us",
 };
 
 export default function RootLayout({
@@ -26,10 +28,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overflow-x-hidden">
-      <body className={`${cormorant.variable} antialiased overflow-x-hidden min-w-0`}>
-        {children}
-      </body>
+    <html lang="en" className={`${cormorant.variable} ${outfit.variable} ${greatVibes.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

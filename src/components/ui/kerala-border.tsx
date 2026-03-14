@@ -11,6 +11,8 @@ export function KeralaBorder({
   className?: string;
   variant?: "row" | "threeCenter";
 }) {
+  const deepamClass = "object-contain h-7 w-auto sm:h-8 opacity-90";
+
   if (variant === "threeCenter") {
     return (
       <div className={`flex justify-center items-center gap-3 sm:gap-4 py-2 ${className}`} aria-hidden>
@@ -19,7 +21,8 @@ export function KeralaBorder({
           alt=""
           width={28}
           height={32}
-          className="object-contain h-7 w-auto sm:h-8"
+          className={`${deepamClass} h-7 sm:h-8`}
+          style={{ width: "auto", height: "1.75rem" }}
         />
         <Image
           src="/images/deepam.png"
@@ -27,13 +30,15 @@ export function KeralaBorder({
           width={44}
           height={50}
           className="object-contain h-11 w-auto sm:h-14"
+          style={{ width: "auto", height: "clamp(2.75rem, 3.5vw, 3.5rem)" }}
         />
         <Image
           src="/images/deepam.png"
           alt=""
           width={28}
           height={32}
-          className="object-contain h-7 w-auto sm:h-8"
+          className={`${deepamClass} h-7 sm:h-8`}
+          style={{ width: "auto", height: "1.75rem" }}
         />
       </div>
     );
@@ -48,7 +53,8 @@ export function KeralaBorder({
           alt=""
           width={28}
           height={32}
-          className="object-contain h-7 w-auto sm:h-8"
+          className={deepamClass}
+          style={{ width: "auto", height: "1.75rem" }}
         />
       ))}
     </div>
@@ -58,7 +64,7 @@ export function KeralaBorder({
 export function KeralaDivider({ className = "" }: { className?: string }) {
   return (
     <div className={`flex items-center justify-center gap-4 sm:gap-6 py-6 ${className}`} aria-hidden>
-      <span className="h-px w-12 sm:w-16 bg-amber-600/50" />
+      <span className="h-px w-12 sm:w-16 bg-gold-line" />
       {[0, 1, 2].map((i) => (
         <Image
           key={i}
@@ -67,9 +73,10 @@ export function KeralaDivider({ className = "" }: { className?: string }) {
           width={28}
           height={32}
           className="object-contain h-8 w-auto"
+          style={{ width: "auto", height: "2rem" }}
         />
       ))}
-      <span className="h-px w-12 sm:w-16 bg-amber-600/50" />
+      <span className="h-px w-12 sm:w-16 bg-gold-line" />
     </div>
   );
 }

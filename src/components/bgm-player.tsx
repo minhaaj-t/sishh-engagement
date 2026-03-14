@@ -29,7 +29,7 @@ interface YTPlayer {
 function fireConfetti() {
   const count = 80;
   const defaults = { origin: { y: 0.6 }, zIndex: 9999 };
-  const colors = ["#d97706", "#b45309", "#fbbf24", "#f59e0b", "#fcd34d"];
+  const colors = ["#8b6914", "#b8860b", "#c9a227", "#c45c2a", "#e8d5a3"];
 
   function fire(particleRatio: number, opts: confetti.Options) {
     confetti({
@@ -155,56 +155,124 @@ export function BgmPlayer() {
       <AnimatePresence onExitComplete={handleOverlayExitComplete}>
         {showOverlay && (
           <motion.div
-            initial={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
             animate={
               isClosing
-                ? { opacity: 0, scale: 1.08 }
-                : { opacity: 1, scale: 1 }
+                ? { opacity: 0 }
+                : { opacity: 1 }
             }
-            exit={{ opacity: 0, scale: 1.08 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             onAnimationComplete={() => {
               if (isClosing) setShowOverlay(false);
             }}
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-4 bg-amber-950/50 backdrop-blur-xl p-4"
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center p-4"
+            style={{
+              background: "var(--bg-overlay)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              perspective: "1400px",
+            }}
           >
-            <motion.button
-              type="button"
-              onClick={handleOpen}
-              initial={{ scale: 1 }}
+            <motion.div
+              initial={{ rotateX: -88, opacity: 0 }}
               animate={
                 isClosing
-                  ? { scale: 1.15, opacity: 0 }
-                  : { scale: 1, opacity: 1 }
+                  ? { rotateX: -88, opacity: 0, scale: 0.92 }
+                  : { rotateX: 0, opacity: 1, scale: 1 }
               }
-              transition={{ duration: 0.35 }}
-              className="rounded-full bg-white/95 px-6 py-3 text-sm font-medium text-amber-800 shadow-xl ring-1 ring-amber-600/30 hover:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
-              aria-label="Open invitation and play music"
-            >
-              Open
-            </motion.button>
-            <motion.button
-              type="button"
-              onClick={() => {
-                setIsClosing(true);
+              exit={{ rotateX: -88, opacity: 0, scale: 0.92 }}
+              transition={{
+                duration: 0.75,
+                ease: [0.23, 1, 0.32, 1],
               }}
-              animate={isClosing ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className="text-xs text-amber-700/70 hover:text-amber-800 focus:outline-none"
-              aria-label="Skip"
+              style={{
+                transformOrigin: "center top",
+                boxShadow: "var(--shadow-overlay)",
+                borderRadius: "1rem",
+                border: "1px solid var(--gold-line)",
+                background: "var(--bg-paper)",
+              }}
+              className="relative flex w-full max-w-sm flex-col overflow-hidden"
             >
-              Skip
-            </motion.button>
+              <div
+                className="absolute left-0 right-0 top-0 h-1"
+                style={{ background: "linear-gradient(90deg, transparent, var(--gold-soft) 20%, var(--gold-soft) 80%, transparent)" }}
+              />
+              <div className="flex flex-col items-center gap-5 p-6 pt-7 pb-8">
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={
+                    isClosing ? {} : { scale: 1, opacity: 1 }
+                  }
+                  transition={{ delay: 0.35, duration: 0.4 }}
+                  className="relative overflow-hidden"
+                >
+                  <img
+                    src="/images/loves.png"
+                    alt="Decorative hearts"
+                    className="h-44 w-44 sm:h-52 sm:w-52 object-contain object-center"
+                  />
+                </motion.div>
+                <motion.p
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={isClosing ? {} : { opacity: 1, y: 0 }}
+                  transition={{ delay: 0.45, duration: 0.35 }}
+                  className="text-center font-serif text-sm italic text-ink-secondary"
+                >
+                  You&apos;re invited
+                </motion.p>
+                <motion.div
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={isClosing ? {} : { opacity: 1, y: 0 }}
+                  transition={{ delay: 0.55, duration: 0.35 }}
+                  className="flex flex-col items-center gap-3"
+                >
+                  <motion.button
+                    type="button"
+                    onClick={handleOpen}
+                    initial={{ scale: 0.9 }}
+                    animate={
+                      isClosing
+                        ? { scale: 1.15, opacity: 0 }
+                        : { scale: 1, opacity: 1 }
+                    }
+                    transition={{ duration: 0.35 }}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="rounded-full px-7 py-3.5 text-sm font-semibold text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-paper)]"
+                    style={{
+                      background: "var(--gold-deep)",
+                      boxShadow: "0 4px 14px rgba(44, 24, 16, 0.25), inset 0 1px 0 rgba(255,255,255,0.15)",
+                    }}
+                    aria-label="Open invitation and play music"
+                  >
+                    Open
+                  </motion.button>
+                  <motion.button
+                    type="button"
+                    onClick={() => setIsClosing(true)}
+                    animate={isClosing ? { opacity: 0 } : { opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-xs text-ink-muted hover:text-ink-secondary focus:outline-none focus-visible:underline font-label"
+                    aria-label="Skip"
+                  >
+                    Skip
+                  </motion.button>
+                </motion.div>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
       <button
         type="button"
         onClick={toggleMute}
-        className="fixed z-50 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-amber-600/40 bg-white/95 text-amber-700 shadow-lg transition hover:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-500/50 touch-manipulation"
+        className="fixed z-50 flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-gold-line bg-paper text-ink-primary transition-all hover:bg-warm focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold-mid)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-page)] touch-manipulation"
         style={{
           right: "max(1rem, env(safe-area-inset-right))",
           bottom: "max(1rem, env(safe-area-inset-bottom))",
+          boxShadow: "var(--shadow-card)",
         }}
         aria-label={isMuted ? "Play background music" : "Mute"}
       >

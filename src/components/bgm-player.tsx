@@ -200,12 +200,12 @@ export function BgmPlayer() {
                     isClosing ? {} : { scale: 1, opacity: 1 }
                   }
                   transition={{ delay: 0.35, duration: 0.4 }}
-                  className="relative overflow-hidden"
+                  className="relative overflow-hidden w-64 h-36 sm:w-80 sm:h-44"
                 >
                   <img
                     src="/images/loves.png"
                     alt="Decorative hearts"
-                    className="h-44 w-44 sm:h-52 sm:w-52 object-contain object-center"
+                    className="w-full h-full object-cover object-center"
                   />
                 </motion.div>
                 <motion.p

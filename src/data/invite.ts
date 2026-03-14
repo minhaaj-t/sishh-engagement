@@ -29,6 +29,7 @@ export const inviteData = {
   ] as ThingItem[],
   instagramUrl: "https://www.instagram.com/sishaj__/",
   countdownTargetDate: new Date("2026-03-23T00:00:00"),
+  engagementDate: "Monday, 23 March 2026",
   calendarEvent: {
     name: "Sishaj & Athulya Engagement",
     description: "You're invited to celebrate our engagement!",

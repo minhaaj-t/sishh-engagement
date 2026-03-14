@@ -9,14 +9,12 @@ export function HeroWithCar({
   partner1Name,
   partner2Name,
   sanskritLine,
-  parentsLine1,
-  parentsLine2,
+  engagementDate,
 }: {
   partner1Name: string;
   partner2Name: string;
   sanskritLine: string;
-  parentsLine1: string;
-  parentsLine2: string;
+  engagementDate: string;
 }) {
   const heroRef = useRef<HTMLElement>(null);
 
@@ -57,8 +55,7 @@ export function HeroWithCar({
 
       <Blessing
         sanskritLine={sanskritLine}
-        parentsLine1={parentsLine1}
-        parentsLine2={parentsLine2}
+        engagementDate={engagementDate}
       />
     </div>
   );

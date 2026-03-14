@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Cormorant_Garamond, Outfit, Great_Vibes } from "next/font/google";
+import { Cormorant_Garamond, Noto_Serif_Devanagari, Outfit, Great_Vibes } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -17,6 +17,11 @@ const greatVibes = Great_Vibes({
   weight: "400",
   variable: "--font-decorative",
 });
+const notoSerifDevanagari = Noto_Serif_Devanagari({
+  subsets: ["devanagari", "latin"],
+  weight: ["400", "600"],
+  variable: "--font-devanagari",
+});
 
 export const metadata: Metadata = {
   title: "Wedding Invitation",
@@ -29,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${outfit.variable} ${greatVibes.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${outfit.variable} ${greatVibes.variable} ${notoSerifDevanagari.variable}`}>
       <body>
         {children}
         <Script

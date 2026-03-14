@@ -17,10 +17,7 @@ export default function Home() {
     partner1Name,
     partner2Name,
     sanskritLine,
-    parentsLine1,
-    parentsLine2,
-    daughterOf,
-    brideGroomMessage,
+    engagementDate,
     calendarEvent,
     mapEmbedUrl,
     mapUrl,
@@ -36,18 +33,16 @@ export default function Home() {
           partner1Name={partner1Name}
           partner2Name={partner2Name}
           sanskritLine={sanskritLine}
-          parentsLine1={parentsLine1}
-          parentsLine2={parentsLine2}
+          engagementDate={engagementDate}
         />
         <Lamp>
           <InviteBlock
             partner1Name={partner1Name}
             partner2Name={partner2Name}
-            daughterOf={daughterOf}
           />
         </Lamp>
         <Events />
-        <BrideGroom message={brideGroomMessage} />
+        <BrideGroom partner1Name={partner1Name} partner2Name={partner2Name} />
         <Rsvp calendarEvent={calendarEvent} />
         <ThingsToKnow mapEmbedUrl={mapEmbedUrl} mapUrl={mapUrl} />
         <Follow instagramUrl={instagramUrl} />

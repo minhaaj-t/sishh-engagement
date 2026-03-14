@@ -33,11 +33,9 @@ function CornerFlourish({ className = "", flip = false }: { className?: string; 
 export function InviteBlock({
   partner1Name,
   partner2Name,
-  daughterOf,
 }: {
   partner1Name: string;
   partner2Name: string;
-  daughterOf: string;
 }) {
   return (
     <section className="relative px-6 sm:px-8 py-10 sm:py-14">
@@ -85,17 +83,6 @@ export function InviteBlock({
               <span className="text-white/95 mx-2">&</span>
               {partner2Name}
             </motion.p>
-            {daughterOf && (
-              <motion.p
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.18 }}
-                className="text-sm text-white/85"
-              >
-                Daughter of {daughterOf}
-              </motion.p>
-            )}
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}

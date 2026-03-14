@@ -4,12 +4,10 @@ import { motion } from "framer-motion";
 
 export function Blessing({
   sanskritLine,
-  parentsLine1,
-  parentsLine2,
+  engagementDate,
 }: {
   sanskritLine: string;
-  parentsLine1: string;
-  parentsLine2: string;
+  engagementDate: string;
 }) {
   return (
     <section className="px-4 py-12 sm:py-16 bg-page">
@@ -20,7 +18,7 @@ export function Blessing({
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className="text-sm sm:text-base text-ink-primary"
-          style={{ fontFamily: "var(--font-serif)" }}
+          style={{ fontFamily: "var(--font-devanagari)" }}
         >
           {sanskritLine}
         </motion.p>
@@ -32,36 +30,37 @@ export function Blessing({
           className="text-xs sm:text-sm uppercase tracking-[0.2em] text-ink-muted"
           style={{ fontFamily: "var(--font-sans)" }}
         >
-          With the heavenly blessings of
+          With the blessings of our families
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-lg sm:text-xl text-ink-primary font-medium"
+          style={{ fontFamily: "var(--font-serif)" }}
+        >
+          Engagement
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.12 }}
-          className="text-sm sm:text-base text-ink-secondary"
+          className="text-sm text-ink-muted italic"
           style={{ fontFamily: "var(--font-serif)" }}
         >
-          {parentsLine1}
+          Request the pleasure of your presence
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.16 }}
-          className="text-ink-muted text-xs"
-        >
-          —
-        </motion.p>
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-sm sm:text-base text-ink-secondary"
+          transition={{ duration: 0.5, delay: 0.14 }}
+          className="text-base sm:text-lg text-ink-secondary"
           style={{ fontFamily: "var(--font-serif)" }}
         >
-          {parentsLine2}
+          {engagementDate}
         </motion.p>
       </div>
       <div className="flex justify-center mt-8 pb-4">

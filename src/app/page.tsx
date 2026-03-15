@@ -2,11 +2,8 @@ import { BgmPlayer } from "@/components/bgm-player";
 import {
   HeroWithCar,
   InviteBlock,
-  Events,
   BrideGroom,
   Rsvp,
-  ThingsToKnow,
-  Follow,
   Countdown,
   Footer,
 } from "@/components/invite";
@@ -20,9 +17,6 @@ export default function Home() {
     sanskritLine,
     engagementDate,
     calendarEvent,
-    mapEmbedUrl,
-    mapUrl,
-    instagramUrl,
     countdownTargetDate,
   } = inviteData;
 
@@ -42,11 +36,8 @@ export default function Home() {
             partner2Name={partner2Name}
           />
         </Lamp>
-        <Events />
         <BrideGroom partner1Name={partner1Name} partner2Name={partner2Name} />
         <Rsvp calendarEvent={calendarEvent} />
-        <ThingsToKnow mapEmbedUrl={mapEmbedUrl} mapUrl={mapUrl} />
-        <Follow instagramUrl={instagramUrl} />
         <Countdown targetDate={countdownTargetDate} />
         <Footer />
       </main>

@@ -83,15 +83,6 @@ export function InviteBlock({
               <span className="text-white/95 mx-2">&</span>
               {partner2Name}
             </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.24 }}
-              className="text-sm uppercase tracking-widest text-white/80 pt-2"
-            >
-              On the engagement
-            </motion.p>
           </div>
           <KeralaBorder variant="threeCenter" className="mt-6" />
         </div>
